@@ -5,12 +5,13 @@ import formUI from './views/form';
 import ticketsUI from './views/tickets';
 import currencyUI from './views/currency';
 
-document.addEventListener('DOMContentLoaded', e => {
-  const form = formUI.form;
+document.addEventListener('DOMContentLoaded', () => {
+  const { form } = formUI;
 
   // Events
+  // eslint-disable-next-line no-use-before-define
   initApp();
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     onFormSubmit();
   });

@@ -77,7 +77,7 @@ module.exports = {
   //Или плагин для сборки html страницы и css кода (скрипты вставляются в html, куски css собираются в один файл).
   plugins: [
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({filename: './style.css'}),
+    new MiniCssExtractPlugin({ filename: './style.css' }),
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),

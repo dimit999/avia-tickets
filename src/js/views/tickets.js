@@ -17,7 +17,7 @@ class TicketsUI {
     let fragment = '';
     const currency = this.getCurrencySymbol();
 
-    tickets.forEach(ticket => {
+    tickets.forEach((ticket) => {
       const template = TicketsUI.ticketTemplate(ticket, currency);
       fragment += template;
     });

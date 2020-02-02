@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import api from '../services/apiService';
 import { formatDate } from '../helpers/date';
 
@@ -11,6 +12,7 @@ class Locations {
     this.airlines = {};
     this.formatDate = helpers.formatDate;
   }
+
   async init() {
     const response = await Promise.all([
       this.api.countries(),
@@ -29,7 +31,7 @@ class Locations {
 
   getCityCodeByKey(key) {
     const city = Object.values(this.cities).find(
-      item => item.full_name === key,
+      (item) => item.full_name === key,
     );
     return city.code;
   }
@@ -89,17 +91,15 @@ class Locations {
   }
 
   serializeTickets(tickets) {
-    return Object.values(tickets).map(ticket => {
-      return {
-        ...ticket,
-        origin_name: this.getCityNameByCode(ticket.origin),
-        destination_name: this.getCityNameByCode(ticket.destination),
-        airline_logo: this.getAirlineLogoByCode(ticket.airline),
-        airline_name: this.getAirlineNameByCode(ticket.airline),
-        departure_at: this.formatDate(ticket.departure_at, 'dd MMM yyyy hh:mm'),
-        return_at: this.formatDate(ticket.return_at, 'dd MMM yyyy hh:mm'),
-      };
-    });
+    return Object.values(tickets).map((ticket) => ({
+      ...ticket,
+      origin_name: this.getCityNameByCode(ticket.origin),
+      destination_name: this.getCityNameByCode(ticket.destination),
+      airline_logo: this.getAirlineLogoByCode(ticket.airline),
+      airline_name: this.getAirlineNameByCode(ticket.airline),
+      departure_at: this.formatDate(ticket.departure_at, 'dd MMM yyyy hh:mm'),
+      return_at: this.formatDate(ticket.return_at, 'dd MMM yyyy hh:mm'),
+    }));
   }
 }
 

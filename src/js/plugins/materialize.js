@@ -1,4 +1,6 @@
+/* eslint-disable no-undef */
 import 'materialize-css/dist/css/materialize.min.css';
+// eslint-disable-next-line import/extensions
 import 'materialize-css/dist/js/materialize.min.js';
 
 // Init select
